@@ -1,0 +1,1149 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pizza Gallery â€” Carta completa con precios. Bajos de Haina, R.D."
+    />
+    <title>Carta | Pizza Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,900;1,600&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --red: #c0392b;
+        --dark: #141010;
+        --cream: #fdf6ec;
+        --gold: #c8973a;
+        --text: #1a1a1a;
+        --muted: #7a6a5a;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--dark);
+        color: var(--cream);
+        min-height: 100vh;
+      }
+
+      /* â”€â”€ HEADER â”€â”€ */
+      .hdr {
+        background: var(--dark);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+      }
+      .hdr-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .hdr-brand img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1.5px solid var(--gold);
+      }
+      .hdr-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: white;
+        line-height: 1.1;
+      }
+      .hdr-name span {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .hdr-loc {
+        font-size: 0.62rem;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 1px;
+      }
+      .hdr-back {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        padding: 6px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        transition: all 0.2s;
+      }
+      .hdr-back:hover {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.35);
+      }
+
+      /* â”€â”€ HERO â”€â”€ */
+      .hero {
+        text-align: center;
+        padding: 40px 20px 32px;
+        background: radial-gradient(
+          ellipse at top,
+          #2d1010 0%,
+          var(--dark) 65%
+        );
+        border-bottom: 1px solid rgba(200, 151, 58, 0.2);
+      }
+      .hero-eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 6vw, 3rem);
+        font-weight: 900;
+        color: white;
+        line-height: 1;
+      }
+      .hero h1 em {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .hero-sub {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 8px;
+        letter-spacing: 0.5px;
+      }
+      .hero-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .htag {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+
+      /* â”€â”€ TABS â”€â”€ */
+      .tabs-bar {
+        background: #1a1010;
+        border-bottom: 1px solid rgba(200, 151, 58, 0.15);
+        overflow-x: auto;
+        scrollbar-width: none;
+        position: sticky;
+        top: 67px;
+        z-index: 100;
+      }
+      .tabs-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .tabs-inner {
+        display: flex;
+        padding: 0 12px;
+        min-width: max-content;
+      }
+      .tab-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        color: rgba(255, 255, 255, 0.4);
+        font-family: inherit;
+        font-size: 0.78rem;
+        font-weight: 500;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .tab-btn:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .tab-btn.active {
+        color: var(--gold);
+        border-color: var(--gold);
+        font-weight: 600;
+      }
+
+      /* â”€â”€ SECTIONS â”€â”€ */
+      .section {
+        display: none;
+      }
+      .section.visible {
+        display: block;
+      }
+      .sec-wrap {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 48px 24px 100px;
+      }
+
+      /* â”€â”€ SECTION TITLE â”€â”€ */
+      .sec-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .sec-title .icon {
+        font-size: 2.2rem;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .sec-title h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: white;
+      }
+      .sec-title h2 em {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .sec-title p {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.3);
+        margin-top: 6px;
+      }
+      .sec-divider {
+        width: 36px;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.4;
+        margin: 12px auto 0;
+      }
+
+      /* â”€â”€ MENU ROW (classic) â”€â”€ */
+      .menu-group {
+        margin-bottom: 38px;
+      }
+      .group-label {
+        font-size: 0.58rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(200, 151, 58, 0.2);
+      }
+      .item {
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .item:last-child {
+        border-bottom: none;
+      }
+      .item-name {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: white;
+        margin-bottom: 4px;
+      }
+      .item-desc {
+        font-size: 0.73rem;
+        color: rgba(255, 255, 255, 0.3);
+        line-height: 1.5;
+      }
+      .item-price {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--gold);
+        white-space: nowrap;
+        padding-top: 1px;
+        flex-shrink: 0;
+      }
+      .item-price small {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.58rem;
+        font-weight: 500;
+        color: rgba(200, 151, 58, 0.65);
+        margin-right: 1px;
+      }
+
+      /* â”€â”€ PIZZA TABLE â”€â”€ */
+      .size-note {
+        text-align: center;
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 24px;
+      }
+      .size-note strong {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .ptbl-wrap {
+        overflow-x: auto;
+        border-radius: 8px;
+      }
+      .ptbl {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.84rem;
+        min-width: 340px;
+      }
+      .ptbl thead tr {
+        border-bottom: 1px solid rgba(200, 151, 58, 0.4);
+      }
+      .ptbl th {
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .ptbl th:not(:first-child) {
+        text-align: center;
+      }
+      .ptbl tbody tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.15s;
+      }
+      .ptbl tbody tr:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .ptbl td {
+        padding: 12px 14px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.87rem;
+      }
+      .ptbl td:not(:first-child) {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--gold);
+      }
+
+      /* â”€â”€ COMBOS â”€â”€ */
+      .combo-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+      .combo-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 3px;
+      }
+      .combo-inc {
+        font-size: 0.71rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .combo-price {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--gold);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .combo-price small {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.58rem;
+        color: rgba(200, 151, 58, 0.65);
+      }
+
+      /* â”€â”€ POSTRES â”€â”€ */
+      .postre-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+      }
+      .postre-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 10px;
+        padding: 22px 12px 16px;
+        text-align: center;
+        transition: background 0.2s;
+      }
+      .postre-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .postre-icon {
+        font-size: 1.9rem;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .postre-name {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: white;
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+
+      /* â”€â”€ BEBIDAS â”€â”€ */
+      .beb-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .beb-row:last-child {
+        border-bottom: none;
+      }
+      .beb-name {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      /* â”€â”€ STICKY CTA â”€â”€ */
+      .cta-bar {
+        background: var(--red);
+        padding: 14px 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: sticky;
+        bottom: 0;
+        z-index: 150;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+      }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        text-decoration: none;
+        padding: 9px 20px;
+        border-radius: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        transition: background 0.2s;
+        white-space: nowrap;
+      }
+      .cta-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .cta-btn.wa {
+        background: rgba(37, 211, 102, 0.3);
+      }
+      .cta-btn.wa:hover {
+        background: rgba(37, 211, 102, 0.5);
+      }
+
+      /* â”€â”€ FOOTER â”€â”€ */
+      .footer {
+        text-align: center;
+        padding: 24px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.25);
+        font-size: 0.7rem;
+        line-height: 1.9;
+      }
+      .footer a {
+        color: rgba(255, 255, 255, 0.25);
+        text-decoration: none;
+      }
+
+      @media (max-width: 480px) {
+        .sec-wrap {
+          padding: 32px 18px 100px;
+        }
+        .postre-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="hdr">
+      <div class="hdr-brand">
+        <img src="logo.jpg" alt="Pizza Gallery" />
+        <div>
+          <div class="hdr-name">Pizza <span>Gallery</span></div>
+          <div class="hdr-loc">Bajos de Haina Â· R.D.</div>
+        </div>
+      </div>
+      <a href="index.html" class="hdr-back">â† Volver</a>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">Carta del Restaurante</div>
+      <h1>Nuestra <em>Carta</em></h1>
+      <p class="hero-sub">
+        Pizzas Â· Hamburguers Â· Pollo Â· Bebidas Â· Postres
+      </p>
+      <div class="hero-info">
+        <span class="htag"
+          >ðŸ“ C/ SÃ¡nchez Km. 18Â½ Â· Zona Industrial, Haina</span
+        >
+        <span class="htag">ðŸ“ž 809-957-4748</span>
+        <span class="htag">ðŸ•˜ 9am â€“ 10pm</span>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <nav class="tabs-bar">
+      <div class="tabs-inner">
+        <button class="tab-btn active" onclick="showTab('pizzas', this)">
+          ðŸ• Pizzas
+        </button>
+        <button class="tab-btn" onclick="showTab('hamburguers', this)">
+          ðŸ” Hamburguers
+        </button>
+        <button class="tab-btn" onclick="showTab('rollos', this)">
+          ðŸŒ¯ Rollos &amp; Sandwiches
+        </button>
+        <button class="tab-btn" onclick="showTab('pollo', this)">
+          ðŸ— Pollo
+        </button>
+        <button class="tab-btn" onclick="showTab('extras', this)">
+          ðŸ¥— Entradas &amp; Ensaladas
+        </button>
+        <button class="tab-btn" onclick="showTab('flatbreads', this)">
+          ðŸ«“ Flatbreads
+        </button>
+        <button class="tab-btn" onclick="showTab('bebidas', this)">
+          ðŸ¥¤ Bebidas
+        </button>
+        <button class="tab-btn" onclick="showTab('postres', this)">
+          ðŸ° Postres
+        </button>
+      </div>
+    </nav>
+
+    <!-- â•â•â• PIZZAS â•â•â• -->
+    <section id="pizzas" class="section visible">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ•</span>
+          <h2>Nuestras <em>Pizzas</em></h2>
+          <p>Masa fresca Â· Salsa artesanal Â· Horneadas al momento</p>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="size-note">
+          TamaÃ±os: &nbsp;<strong>PequeÃ±a</strong> (4 ing.) &nbsp;Â·&nbsp;
+          <strong>Mediana</strong> (6 ing.) &nbsp;Â·&nbsp;
+          <strong>Grande</strong> (10 ing.)
+        </div>
+        <div class="ptbl-wrap">
+          <table class="ptbl">
+            <thead>
+              <tr>
+                <th>Pizza</th>
+                <th>PequeÃ±a</th>
+                <th>Mediana</th>
+                <th>Grande</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Queso</td>
+                <td>RD$295</td>
+                <td>RD$437</td>
+                <td>RD$660</td>
+              </tr>
+              <tr>
+                <td>JamÃ³n</td>
+                <td>RD$360</td>
+                <td>RD$467</td>
+                <td>RD$678</td>
+              </tr>
+              <tr>
+                <td>Peperoni</td>
+                <td>RD$307</td>
+                <td>RD$413</td>
+                <td>RD$660</td>
+              </tr>
+              <tr>
+                <td>MaÃ­z</td>
+                <td>RD$325</td>
+                <td>RD$531</td>
+                <td>RD$697</td>
+              </tr>
+              <tr>
+                <td>JamÃ³n y MaÃ­z</td>
+                <td>RD$390</td>
+                <td>RD$531</td>
+                <td>RD$697</td>
+              </tr>
+              <tr>
+                <td>Peperoni y MaÃ­z</td>
+                <td>RD$402</td>
+                <td>RD$543</td>
+                <td>RD$708</td>
+              </tr>
+              <tr>
+                <td>Tocineta</td>
+                <td>RD$402</td>
+                <td>RD$572</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Salchicha Italiana</td>
+                <td>RD$413</td>
+                <td>RD$585</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Tomate</td>
+                <td>RD$360</td>
+                <td>RD$543</td>
+                <td>RD$720</td>
+              </tr>
+              <tr>
+                <td>Hongos</td>
+                <td>RD$390</td>
+                <td>RD$572</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Aceitunas Negras</td>
+                <td>RD$413</td>
+                <td>RD$579</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Carnes</td>
+                <td>RD$425</td>
+                <td>RD$620</td>
+                <td>RD$885</td>
+              </tr>
+              <tr>
+                <td>Vegetales</td>
+                <td>RD$402</td>
+                <td>RD$543</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Especial</td>
+                <td>RD$531</td>
+                <td>RD$660</td>
+                <td>RD$962</td>
+              </tr>
+              <tr>
+                <td>Queso en el Borde</td>
+                <td>RD$531</td>
+                <td>RD$697</td>
+                <td>RD$885</td>
+              </tr>
+              <tr>
+                <td>Pollo</td>
+                <td>RD$413</td>
+                <td>RD$620</td>
+                <td>RD$885</td>
+              </tr>
+              <tr>
+                <td>Pollo Especial</td>
+                <td>RD$520</td>
+                <td>RD$697</td>
+                <td>RD$962</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• HAMBURGUERS â•â•â• -->
+    <section id="hamburguers" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ”</span>
+          <h2><em>Hamburguers</em></h2>
+          <p>Servidas con pan tostado y acompaÃ±antes</p>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer ClÃ¡sica</div>
+            <div class="item-desc">Con todos los ingredientes de la casa</div>
+          </div>
+          <div class="item-price"><small>RD$</small>319</div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer de Res</div>
+            <div class="item-desc">Carne de res a la parrilla</div>
+          </div>
+          <div class="item-price"><small>RD$</small>354</div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer de Pollo</div>
+            <div class="item-desc">Pechuga de pollo jugosa</div>
+          </div>
+          <div class="item-price"><small>RD$</small>365</div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer Pollo a la Plancha</div>
+            <div class="item-desc">Ligera y saludable</div>
+          </div>
+          <div class="item-price"><small>RD$</small>390</div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer Pollo y Bacon</div>
+            <div class="item-desc">Pollo con tiras de tocineta</div>
+          </div>
+          <div class="item-price"><small>RD$</small>401</div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer Pollo Empanizado</div>
+            <div class="item-desc">Crujiente y dorado</div>
+          </div>
+          <div class="item-price"><small>RD$</small>436</div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="item-name">Hamburguer Pollo con Tocineta</div>
+            <div class="item-desc">Jugoso pollo con tocineta crujiente</div>
+          </div>
+          <div class="item-price"><small>RD$</small>466</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• ROLLOS & SANDWICHES â•â•â• -->
+    <section id="rollos" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸŒ¯</span>
+          <h2>Rollos &amp; <em>Sandwiches</em></h2>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Rollos</div>
+          <div class="item">
+            <div>
+              <div class="item-name">Rollo CÃ©sar con JamÃ³n</div>
+              <div class="item-desc">Tortilla con aderezo CÃ©sar y jamÃ³n</div>
+            </div>
+            <div class="item-price"><small>RD$</small>118</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Rollo de Pollo Crunch</div>
+              <div class="item-desc">Pollo empanizado crujiente</div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Rollo de Vegetales</div>
+              <div class="item-desc">Fresco y ligero</div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Sandwiches</div>
+          <div class="item">
+            <div><div class="item-name">Sandwich de Queso</div></div>
+            <div class="item-price"><small>RD$</small>120</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Sandwich de JamÃ³n y Queso</div></div>
+            <div class="item-price"><small>RD$</small>160</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Club Sandwich</div>
+              <div class="item-desc">
+                Triple capa Â· jamÃ³n, queso y vegetales
+              </div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Sandwich Especial</div></div>
+            <div class="item-price">â€”</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Sandwich Super</div></div>
+            <div class="item-price">â€”</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• POLLO â•â•â• -->
+    <section id="pollo" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ—</span>
+          <h2>Pollo <em>Gallery</em></h2>
+          <p>Todos los combos incluyen papa o fritos</p>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Combos de Piezas</div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">2 Piezas de Pollo</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 13 oz</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>350</div>
+          </div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">3 Piezas de Pollo</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 13 oz</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>420</div>
+          </div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">4 Piezas de Pollo</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 13 oz</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>585</div>
+          </div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">8 Piezas de Pollo</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 1.25 Lt</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>850</div>
+          </div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">12 Piezas de Pollo</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 1.25 Lt</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>1,410</div>
+          </div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Combos de Pechugas</div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">5 Pechugas</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 13 oz</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>375</div>
+          </div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">8 Pechugas</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 13 oz</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>700</div>
+          </div>
+          <div class="combo-item">
+            <div>
+              <div class="combo-name">10 Pechugas</div>
+              <div class="combo-inc">Papa o fritos Â· Refresco 13 oz</div>
+            </div>
+            <div class="combo-price"><small>RD$</small>850</div>
+          </div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Pechuga a la Plancha</div>
+          <div class="item">
+            <div><div class="item-name">Con Ensalada</div></div>
+            <div class="item-price"><small>RD$</small>310</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Con Ensalada y Papas</div></div>
+            <div class="item-price"><small>RD$</small>420</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Con Caprese</div></div>
+            <div class="item-price"><small>RD$</small>570</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Con Crema</div>
+              <div class="item-desc">Con papas o fritos</div>
+            </div>
+            <div class="item-price"><small>RD$</small>570</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Con Mozarella</div>
+              <div class="item-desc">Con papas o fritos</div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Pollo Cordon Blue</div>
+              <div class="item-desc">Con papas o fritos</div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• ENTRADAS & ENSALADAS â•â•â• -->
+    <section id="extras" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ¥—</span>
+          <h2>Entradas &amp; <em>Ensaladas</em></h2>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Entradas</div>
+          <div class="item">
+            <div><div class="item-name">Brucheta Pizza</div></div>
+            <div class="item-price"><small>RD$</small>100</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Brucheta Campesina</div>
+              <div class="item-desc">10 piezas</div>
+            </div>
+            <div class="item-price"><small>RD$</small>200</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Servicio de Papas</div></div>
+            <div class="item-price"><small>RD$</small>110</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Servicio de Fritos</div></div>
+            <div class="item-price">â€”</div>
+          </div>
+          <div class="item">
+            <div><div class="item-name">Productos Lays</div></div>
+            <div class="item-price">â€”</div>
+          </div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Ensaladas</div>
+          <div class="item">
+            <div>
+              <div class="item-name">Ensalada Caprese</div>
+              <div class="item-desc">Tomate fresco, mozarella y albahaca</div>
+            </div>
+            <div class="item-price"><small>RD$</small>480</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Ensalada Caprese con Bruchetas</div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+          <div class="item">
+            <div>
+              <div class="item-name">Ensalada Verde</div>
+              <div class="item-desc">Mix de vegetales frescos</div>
+            </div>
+            <div class="item-price">â€”</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• FLATBREADS â•â•â• -->
+    <section id="flatbreads" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ«“</span>
+          <h2><em>Flatbreads</em></h2>
+          <p>Pan plano artesanal con toppings seleccionados</p>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="item">
+          <div><div class="item-name">Flatbread Tocineta</div></div>
+          <div class="item-price">â€”</div>
+        </div>
+        <div class="item">
+          <div><div class="item-name">Flatbread Caprese</div></div>
+          <div class="item-price">â€”</div>
+        </div>
+        <div class="item">
+          <div><div class="item-name">Flatbread Salchicha Italiana</div></div>
+          <div class="item-price">â€”</div>
+        </div>
+        <div class="item">
+          <div><div class="item-name">Flatbread Peperoni</div></div>
+          <div class="item-price"><small>RD$</small>410</div>
+        </div>
+        <div class="item">
+          <div><div class="item-name">Flatbread Especial</div></div>
+          <div class="item-price"><small>RD$</small>375</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• BEBIDAS â•â•â• -->
+    <section id="bebidas" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ¥¤</span>
+          <h2><em>Bebidas</em></h2>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Jugos Naturales</div>
+          <div class="beb-row">
+            <div class="beb-name">Jugo de Fresa</div>
+            <div class="item-price"><small>RD$</small>150</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Jugo de Fresa con Leche</div>
+            <div class="item-price"><small>RD$</small>175</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Jugo de China</div>
+            <div class="item-price"><small>RD$</small>100</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Jugo de Chinola con Leche</div>
+            <div class="item-price"><small>RD$</small>100</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Jugos Naturales (varios)</div>
+            <div class="item-price"><small>RD$</small>100</div>
+          </div>
+        </div>
+        <div class="menu-group">
+          <div class="group-label">Refrescos</div>
+          <div class="beb-row">
+            <div class="beb-name">Refresco 13 oz</div>
+            <div class="item-price"><small>RD$</small>60</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Refresco 20 oz</div>
+            <div class="item-price"><small>RD$</small>150</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Refresco 1.25 Lt</div>
+            <div class="item-price"><small>RD$</small>150</div>
+          </div>
+          <div class="beb-row">
+            <div class="beb-name">Refresco 2 Lt</div>
+            <div class="item-price"><small>RD$</small>225</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• POSTRES â•â•â• -->
+    <section id="postres" class="section">
+      <div class="sec-wrap">
+        <div class="sec-title">
+          <span class="icon">ðŸ°</span>
+          <h2><em>Postres</em></h2>
+          <div class="sec-divider"></div>
+        </div>
+        <div class="postre-grid">
+          <div class="postre-card">
+            <span class="postre-icon">ðŸ«</span>
+            <div class="postre-name">Brownies</div>
+            <div class="item-price"><small>RD$</small>100</div>
+          </div>
+          <div class="postre-card">
+            <span class="postre-icon">ðŸ®</span>
+            <div class="postre-name">Cheesecake Dulce de Leche</div>
+            <div class="item-price"><small>RD$</small>150</div>
+          </div>
+          <div class="postre-card">
+            <span class="postre-icon">ðŸ§</span>
+            <div class="postre-name">Cheesecake</div>
+            <div class="item-price"><small>RD$</small>150</div>
+          </div>
+          <div class="postre-card">
+            <span class="postre-icon">ðŸ¥¥</span>
+            <div class="postre-name">Dulce de Coco Horneado</div>
+            <div class="item-price"><small>RD$</small>150</div>
+          </div>
+          <div class="postre-card">
+            <span class="postre-icon">ðŸ¦</span>
+            <div class="postre-name">Helados Bon</div>
+            <div
+              class="item-price"
+              style="font-size: 0.78rem; color: rgba(200, 151, 58, 0.5)"
+            >
+              Varios
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STICKY ORDER BAR -->
+    <div class="cta-bar">
+      <a href="https://www.pedidosya.com.do" target="_blank" class="cta-btn"
+        >ðŸ›µ Ordenar por PedidosYa</a
+      >
+      <a
+        href="https://wa.me/18099574748?text=Hola!%20Quiero%20hacer%20un%20pedido"
+        target="_blank"
+        class="cta-btn wa"
+        >ðŸ’¬ WhatsApp</a
+      >
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>
+        <strong style="color: rgba(255, 255, 255, 0.5)">Pizza Gallery</strong>
+        Â· C/ SÃ¡nchez Km. 18Â½ No. 9, Zona Industrial de Haina
+      </p>
+      <p>
+        Sucursal: C/ SÃ¡nchez Km. 1, Cruce de Haina Â·
+        <a href="tel:8099574748">809-957-4748</a>
+      </p>
+    </footer>
+
+    <script>
+      function showTab(id, btn) {
+        document
+          .querySelectorAll(".section")
+          .forEach((s) => s.classList.remove("visible"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById(id).classList.add("visible");
+        btn.classList.add("active");
+        btn.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

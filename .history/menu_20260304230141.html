@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pizza Gallery — Carta completa con precios. Pizzas, hamburguers, pollo, sandwiches, bebidas y postres en Bajos de Haina, R.D."
+    />
+    <title>Carta | Pizza Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --red: #c0392b;
+        --red-dark: #9b2b1e;
+        --cream: #fdf6ec;
+        --text: #1a1a1a;
+        --text-light: #666;
+        --border: #e8d5b7;
+        --card: #ffffff;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--cream);
+        color: var(--text);
+      }
+
+      /* HEADER */
+      .menu-header {
+        background: var(--red);
+        color: white;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+      .hdr-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .hdr-brand img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+      }
+      .hdr-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .hdr-name span {
+        color: #ffb085;
+        font-style: italic;
+      }
+      .hdr-sub {
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.65);
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-top: 1px;
+      }
+      .hdr-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        text-decoration: none;
+        padding: 7px 14px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        transition: background 0.2s;
+      }
+      .hdr-back:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      /* HERO */
+      .menu-hero {
+        background: linear-gradient(
+          135deg,
+          #1a0808 0%,
+          #3a1010 50%,
+          #1a0808 100%
+        );
+        color: white;
+        text-align: center;
+        padding: 32px 20px 24px;
+      }
+      .menu-hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+        margin-bottom: 6px;
+      }
+      .menu-hero h1 em {
+        color: #ffb085;
+        font-style: italic;
+      }
+      .menu-hero p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+      }
+      .hero-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .hero-tag {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.85);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+      }
+
+      /* NAV TABS */
+      .menu-nav {
+        background: white;
+        border-bottom: 2px solid var(--border);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .menu-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-inner {
+        display: flex;
+        padding: 0 12px;
+        min-width: max-content;
+      }
+      .nav-inner a {
+        display: block;
+        padding: 13px 14px;
+        text-decoration: none;
+        color: var(--text-light);
+        font-size: 0.8rem;
+        font-weight: 500;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .nav-inner a:hover {
+        color: var(--red);
+        border-color: var(--red);
+      }
+
+      /* WRAPPER */
+      .mw {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 30px 16px 64px;
+      }
+
+      /* SECTION HEADER */
+      .sec {
+        margin-bottom: 48px;
+      }
+      .sec-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .sec-ico {
+        width: 40px;
+        height: 40px;
+        background: var(--red);
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        flex-shrink: 0;
+      }
+      .sec-head h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.45rem;
+        color: var(--red);
+      }
+      .sec-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, var(--border), transparent);
+      }
+
+      /* ITEM CARDS grid */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 10px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        padding: 13px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+        transition:
+          box-shadow 0.2s,
+          transform 0.15s;
+      }
+      .card:hover {
+        box-shadow: 0 4px 18px rgba(192, 57, 43, 0.13);
+        transform: translateY(-1px);
+      }
+      .card-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .card-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--text);
+        margin-bottom: 2px;
+      }
+      .card-desc {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        line-height: 1.4;
+      }
+      .price {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--red);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .price sup {
+        font-size: 0.65rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+      }
+
+      /* PIZZA TABLE */
+      .pizza-sizes-note {
+        background: #fff9f4;
+        border: 1px solid #f5c9a0;
+        border-radius: 9px;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .sz-badge {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.82rem;
+        color: var(--text);
+      }
+      .sz-pill {
+        background: var(--red);
+        color: white;
+        border-radius: 5px;
+        padding: 2px 9px;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .tbl-wrap {
+        overflow-x: auto;
+        border-radius: 9px;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+      }
+      .ptbl {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        font-size: 0.86rem;
+        min-width: 440px;
+      }
+      .ptbl thead tr {
+        background: var(--red);
+        color: white;
+      }
+      .ptbl th {
+        padding: 10px 15px;
+        text-align: left;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+      }
+      .ptbl th:not(:first-child) {
+        text-align: center;
+      }
+      .ptbl tbody tr:nth-child(even) {
+        background: #fdf6ec;
+      }
+      .ptbl tbody tr:hover {
+        background: #fff0e8;
+      }
+      .ptbl td {
+        padding: 9px 15px;
+        border-bottom: 1px solid #f0e4d0;
+      }
+      .ptbl td:not(:first-child) {
+        text-align: center;
+        font-weight: 700;
+        color: var(--red);
+        font-family: "Playfair Display", serif;
+        font-size: 0.92rem;
+      }
+
+      /* COMBO TABLE */
+      .ctbl-wrap {
+        overflow-x: auto;
+        border-radius: 9px;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+        margin-bottom: 18px;
+      }
+      .ctbl {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        font-size: 0.86rem;
+      }
+      .ctbl thead tr {
+        background: #1a1a1a;
+        color: white;
+      }
+      .ctbl th {
+        padding: 10px 15px;
+        text-align: left;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .ctbl th:last-child {
+        text-align: right;
+      }
+      .ctbl tbody tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+      .ctbl tbody tr:hover {
+        background: #fff0e8;
+      }
+      .ctbl td {
+        padding: 9px 15px;
+        border-bottom: 1px solid #eee;
+        font-size: 0.86rem;
+      }
+      .ctbl td:last-child {
+        text-align: right;
+        font-weight: 700;
+        color: var(--red);
+        font-family: "Playfair Display", serif;
+      }
+      .combo-inc {
+        font-size: 0.72rem;
+        color: #999;
+        margin-top: 2px;
+      }
+
+      /* BEBIDAS */
+      .beb-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 9px;
+      }
+      .beb-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        padding: 11px 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+      .beb-name {
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+
+      /* POSTRES */
+      .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+        gap: 11px;
+      }
+      .post-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px 14px;
+        text-align: center;
+        transition: box-shadow 0.2s;
+      }
+      .post-card:hover {
+        box-shadow: 0 4px 16px rgba(192, 57, 43, 0.12);
+      }
+      .post-icon {
+        font-size: 1.8rem;
+        margin-bottom: 7px;
+      }
+      .post-name {
+        font-weight: 600;
+        font-size: 0.86rem;
+        margin-bottom: 4px;
+      }
+
+      /* SECTION LABEL */
+      .sub-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-light);
+        margin: 0 0 9px;
+      }
+
+      /* CTA */
+      .cta-strip {
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        text-align: center;
+        padding: 36px 20px;
+      }
+      .cta-strip h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.45rem;
+        margin-bottom: 6px;
+      }
+      .cta-strip p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.88rem;
+        margin-bottom: 20px;
+      }
+      .cta-btns {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 11px 22px;
+        border-radius: 7px;
+        font-weight: 700;
+        font-size: 0.88rem;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          opacity 0.2s;
+      }
+      .cta-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
+      .btn-py {
+        background: #ff6900;
+        color: white;
+      }
+      .btn-wa {
+        background: #25d366;
+        color: white;
+      }
+
+      /* FOOTER */
+      .mfooter {
+        background: #1a1a1a;
+        color: rgba(255, 255, 255, 0.55);
+        text-align: center;
+        padding: 22px 16px;
+        font-size: 0.8rem;
+      }
+      .mfooter strong {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .mfooter a {
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+      }
+
+      @media (max-width: 580px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .beb-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .post-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .sec-head h2 {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="menu-header">
+      <div class="hdr-brand">
+        <img src="logo.jpg" alt="Pizza Gallery" />
+        <div>
+          <div class="hdr-name">Pizza <span>Gallery</span></div>
+          <div class="hdr-sub">Bajos de Haina · R.D.</div>
+        </div>
+      </div>
+      <a href="index.html" class="hdr-back">&#8592; Volver</a>
+    </header>
+
+    <!-- HERO STRIP -->
+    <div class="menu-hero">
+      <h1>Nuestra <em>Carta</em></h1>
+      <p>
+        Pizzas artesanales · Hamburguers · Pollo · Sandwiches · Bebidas ·
+        Postres
+      </p>
+      <div class="hero-info">
+        <span class="hero-tag"
+          >&#128205; C/ Sánchez Km. 18½ No. 9 · Zona Industrial de Haina</span
+        >
+        <span class="hero-tag">&#128222; 809-957-4748</span>
+        <span class="hero-tag">&#128337; 9am – 10pm todos los días</span>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="menu-nav">
+      <div class="nav-inner">
+        <a href="#pizzas">🍕 Pizzas</a>
+        <a href="#hamburguers">🍔 Hamburguers</a>
+        <a href="#rollos">🌯 Rollos &amp; Sandwiches</a>
+        <a href="#pollo">🍗 Pollo</a>
+        <a href="#entradas">🧾 Entradas</a>
+        <a href="#ensaladas">🥗 Ensaladas</a>
+        <a href="#flatbreads">🫓 Flatbreads</a>
+        <a href="#bebidas">🥤 Bebidas</a>
+        <a href="#postres">🍰 Postres</a>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="mw">
+      <!-- ===== PIZZAS ===== -->
+      <section class="sec" id="pizzas">
+        <div class="sec-head">
+          <div class="sec-ico">🍕</div>
+          <h2>Pizzas</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="pizza-sizes-note">
+          <div class="sz-badge">
+            <span class="sz-pill">P</span> Pequeña · 4 ingredientes
+          </div>
+          <div class="sz-badge">
+            <span class="sz-pill">M</span> Mediana · 6 ingredientes
+          </div>
+          <div class="sz-badge">
+            <span class="sz-pill">G</span> Grande · 10 ingredientes
+          </div>
+        </div>
+        <div class="tbl-wrap">
+          <table class="ptbl">
+            <thead>
+              <tr>
+                <th>Pizza</th>
+                <th>Pequeña</th>
+                <th>Mediana</th>
+                <th>Grande</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Queso</td>
+                <td>RD$295</td>
+                <td>RD$437</td>
+                <td>RD$660</td>
+              </tr>
+              <tr>
+                <td>Jamón</td>
+                <td>RD$360</td>
+                <td>RD$467</td>
+                <td>RD$678</td>
+              </tr>
+              <tr>
+                <td>Peperoni</td>
+                <td>RD$307</td>
+                <td>RD$413</td>
+                <td>RD$660</td>
+              </tr>
+              <tr>
+                <td>Maíz</td>
+                <td>RD$325</td>
+                <td>RD$531</td>
+                <td>RD$697</td>
+              </tr>
+              <tr>
+                <td>Jamón y Maíz</td>
+                <td>RD$390</td>
+                <td>RD$531</td>
+                <td>RD$697</td>
+              </tr>
+              <tr>
+                <td>Peperoni y Maíz</td>
+                <td>RD$402</td>
+                <td>RD$543</td>
+                <td>RD$708</td>
+              </tr>
+              <tr>
+                <td>Tocineta</td>
+                <td>RD$402</td>
+                <td>RD$572</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Salchicha Italiana</td>
+                <td>RD$413</td>
+                <td>RD$585</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Tomate</td>
+                <td>RD$360</td>
+                <td>RD$543</td>
+                <td>RD$720</td>
+              </tr>
+              <tr>
+                <td>Hongos</td>
+                <td>RD$390</td>
+                <td>RD$572</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Aceitunas Negras</td>
+                <td>RD$413</td>
+                <td>RD$579</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Carnes</td>
+                <td>RD$425</td>
+                <td>RD$620</td>
+                <td>RD$885</td>
+              </tr>
+              <tr>
+                <td>Vegetales</td>
+                <td>RD$402</td>
+                <td>RD$543</td>
+                <td>RD$744</td>
+              </tr>
+              <tr>
+                <td>Especial</td>
+                <td>RD$531</td>
+                <td>RD$660</td>
+                <td>RD$962</td>
+              </tr>
+              <tr>
+                <td>Queso en el Borde</td>
+                <td>RD$531</td>
+                <td>RD$697</td>
+                <td>RD$885</td>
+              </tr>
+              <tr>
+                <td>Pollo</td>
+                <td>RD$413</td>
+                <td>RD$620</td>
+                <td>RD$885</td>
+              </tr>
+              <tr>
+                <td>Pollo Especial</td>
+                <td>RD$520</td>
+                <td>RD$697</td>
+                <td>RD$962</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== HAMBURGUERS ===== -->
+      <section class="sec" id="hamburguers">
+        <div class="sec-head">
+          <div class="sec-ico">🍔</div>
+          <h2>Hamburguers</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer</div>
+              <div class="card-desc">Clásica con todos los ingredientes</div>
+            </div>
+            <div class="price"><sup>RD$</sup>319</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer Res</div>
+              <div class="card-desc">Carne de res a la parrilla</div>
+            </div>
+            <div class="price"><sup>RD$</sup>354</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer Pollo</div>
+              <div class="card-desc">Pechuga de pollo jugosa</div>
+            </div>
+            <div class="price"><sup>RD$</sup>365</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer Pollo a la Plancha</div>
+              <div class="card-desc">Estilo ligero, pollo a la plancha</div>
+            </div>
+            <div class="price"><sup>RD$</sup>390</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer Pollo Empanizado</div>
+              <div class="card-desc">Crujiente y dorado</div>
+            </div>
+            <div class="price"><sup>RD$</sup>436</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer Pollo y Bacon</div>
+              <div class="card-desc">Pollo con tiras de tocineta</div>
+            </div>
+            <div class="price"><sup>RD$</sup>401</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Hamburguer Pollo con Tocineta</div>
+              <div class="card-desc">Jugoso pollo con tocineta crujiente</div>
+            </div>
+            <div class="price"><sup>RD$</sup>466</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ROLLOS & SANDWICHES ===== -->
+      <section class="sec" id="rollos">
+        <div class="sec-head">
+          <div class="sec-ico">🌯</div>
+          <h2>Rollos &amp; Sandwiches</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Rollo César con Jamón</div>
+              <div class="card-desc">Tortilla con aderezo César y jamón</div>
+            </div>
+            <div class="price"><sup>RD$</sup>118</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Rollo de Vegetales</div>
+              <div class="card-desc">Fresco, lleno de vegetales</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Rollo de Pollo Crunch</div>
+              <div class="card-desc">Pollo empanizado crujiente en rollo</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Sandwich de Queso</div>
+            </div>
+            <div class="price"><sup>RD$</sup>120</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Sandwich de Jamón y Queso</div>
+            </div>
+            <div class="price"><sup>RD$</sup>160</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Club Sandwich</div>
+              <div class="card-desc">
+                Triple capa con jamón, queso y vegetales
+              </div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Sandwich Especial</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Sandwich Super</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== POLLO ===== -->
+      <section class="sec" id="pollo">
+        <div class="sec-head">
+          <div class="sec-ico">🍗</div>
+          <h2>Pollo</h2>
+          <div class="sec-line"></div>
+        </div>
+
+        <p class="sub-label">Combos de Piezas</p>
+        <div class="ctbl-wrap">
+          <table class="ctbl">
+            <thead>
+              <tr>
+                <th>Combo</th>
+                <th>Incluye</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2 Piezas de Pollo</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 13 oz</div>
+                </td>
+                <td>RD$350</td>
+              </tr>
+              <tr>
+                <td><strong>3 Piezas de Pollo</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 13 oz</div>
+                </td>
+                <td>RD$420</td>
+              </tr>
+              <tr>
+                <td><strong>4 Piezas de Pollo</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 13 oz</div>
+                </td>
+                <td>RD$585</td>
+              </tr>
+              <tr>
+                <td><strong>8 Piezas de Pollo</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 1.25 Lt</div>
+                </td>
+                <td>RD$850</td>
+              </tr>
+              <tr>
+                <td><strong>12 Piezas de Pollo</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 1.25 Lt</div>
+                </td>
+                <td>RD$1,410</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="sub-label" style="margin-top: 18px">Combos de Pechugas</p>
+        <div class="ctbl-wrap">
+          <table class="ctbl">
+            <thead>
+              <tr>
+                <th>Combo</th>
+                <th>Incluye</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>5 Pechugas</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 13 oz</div>
+                </td>
+                <td>RD$375</td>
+              </tr>
+              <tr>
+                <td><strong>8 Pechugas</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 13 oz</div>
+                </td>
+                <td>RD$700</td>
+              </tr>
+              <tr>
+                <td><strong>10 Pechugas</strong></td>
+                <td>
+                  <div class="combo-inc">Papa o fritos + Refresco 13 oz</div>
+                </td>
+                <td>RD$850</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="sub-label" style="margin-top: 18px">
+          Platos de Pechuga a la Plancha
+        </p>
+        <div class="cards">
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Pechuga a la Plancha con Ensalada</div>
+            </div>
+            <div class="price"><sup>RD$</sup>310</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">
+                Pechuga a la Plancha con Ensalada y Papas
+              </div>
+            </div>
+            <div class="price"><sup>RD$</sup>420</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Pechuga a la Plancha con Mozarella</div>
+              <div class="card-desc">Con papas o fritos</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Pechuga a la Plancha con Caprese</div>
+            </div>
+            <div class="price"><sup>RD$</sup>570</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Pechuga a la Plancha con Crema</div>
+              <div class="card-desc">Con papas o fritos</div>
+            </div>
+            <div class="price"><sup>RD$</sup>570</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Pollo Cordon Blue</div>
+              <div class="card-desc">Con papas o fritos</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ENTRADAS ===== -->
+      <section class="sec" id="entradas">
+        <div class="sec-head">
+          <div class="sec-ico">🧾</div>
+          <h2>Entradas</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Brucheta Pizza</div>
+            </div>
+            <div class="price"><sup>RD$</sup>100</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Brucheta Campesina</div>
+              <div class="card-desc">10 piezas</div>
+            </div>
+            <div class="price"><sup>RD$</sup>200</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Servicio de Papas</div>
+            </div>
+            <div class="price"><sup>RD$</sup>110</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Servicio de Fritos</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Productos Lays</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ENSALADAS ===== -->
+      <section class="sec" id="ensaladas">
+        <div class="sec-head">
+          <div class="sec-ico">🥗</div>
+          <h2>Ensaladas</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Ensalada Caprese</div>
+              <div class="card-desc">Tomate fresco, mozarella y albahaca</div>
+            </div>
+            <div class="price"><sup>RD$</sup>480</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Ensalada Caprese con Bruchetas</div>
+              <div class="card-desc">Caprese acompañada de bruchetas</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Ensalada Verde</div>
+              <div class="card-desc">Mix de vegetales frescos</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FLATBREADS ===== -->
+      <section class="sec" id="flatbreads">
+        <div class="sec-head">
+          <div class="sec-ico">🫓</div>
+          <h2>Flatbreads</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Flatbread Tocineta</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Flatbread Caprese</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Flatbread Salchicha Italiana</div>
+            </div>
+            <div class="price">—</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Flatbread Peperoni</div>
+            </div>
+            <div class="price"><sup>RD$</sup>410</div>
+          </div>
+          <div class="card">
+            <div class="card-info">
+              <div class="card-name">Flatbread Especial</div>
+            </div>
+            <div class="price"><sup>RD$</sup>375</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BEBIDAS ===== -->
+      <section class="sec" id="bebidas">
+        <div class="sec-head">
+          <div class="sec-ico">🥤</div>
+          <h2>Bebidas</h2>
+          <div class="sec-line"></div>
+        </div>
+
+        <p class="sub-label">Jugos Naturales</p>
+        <div class="beb-grid" style="margin-bottom: 18px">
+          <div class="beb-card">
+            <div class="beb-name">Jugo de Fresa</div>
+            <div class="price"><sup>RD$</sup>150</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Jugo de Fresa con Leche</div>
+            <div class="price"><sup>RD$</sup>175</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Jugo de China</div>
+            <div class="price"><sup>RD$</sup>100</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Jugo de Chinola con Leche</div>
+            <div class="price"><sup>RD$</sup>100</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Jugos Naturales (varios)</div>
+            <div class="price"><sup>RD$</sup>100</div>
+          </div>
+        </div>
+
+        <p class="sub-label">Refrescos</p>
+        <div class="beb-grid">
+          <div class="beb-card">
+            <div class="beb-name">Refresco 13 oz</div>
+            <div class="price"><sup>RD$</sup>60</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Refresco 20 oz</div>
+            <div class="price"><sup>RD$</sup>150</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Refresco 1.25 Lt</div>
+            <div class="price"><sup>RD$</sup>150</div>
+          </div>
+          <div class="beb-card">
+            <div class="beb-name">Refresco 2 Lt</div>
+            <div class="price"><sup>RD$</sup>225</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== POSTRES ===== -->
+      <section class="sec" id="postres">
+        <div class="sec-head">
+          <div class="sec-ico">🍰</div>
+          <h2>Postres</h2>
+          <div class="sec-line"></div>
+        </div>
+        <div class="post-grid">
+          <div class="post-card">
+            <div class="post-icon">🍫</div>
+            <div class="post-name">Brownies</div>
+            <div class="price"><sup>RD$</sup>100</div>
+          </div>
+          <div class="post-card">
+            <div class="post-icon">🍮</div>
+            <div class="post-name">Cheesecake Dulce de Leche</div>
+            <div class="price"><sup>RD$</sup>150</div>
+          </div>
+          <div class="post-card">
+            <div class="post-icon">🧁</div>
+            <div class="post-name">Cheesecake</div>
+            <div class="price"><sup>RD$</sup>150</div>
+          </div>
+          <div class="post-card">
+            <div class="post-icon">🥥</div>
+            <div class="post-name">Dulce de Coco Horneado</div>
+            <div class="price"><sup>RD$</sup>150</div>
+          </div>
+          <div class="post-card">
+            <div class="post-icon">🍦</div>
+            <div class="post-name">Helados Bon</div>
+            <div class="price">Varios</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /mw -->
+
+    <!-- ORDER CTA -->
+    <div class="cta-strip">
+      <h3>¿Listo para ordenar?</h3>
+      <p>Pide ahora por PedidosYa o contáctanos por WhatsApp</p>
+      <div class="cta-btns">
+        <a
+          href="https://www.pedidosya.com.do"
+          target="_blank"
+          class="cta-btn btn-py"
+          >🛵 Ordenar por PedidosYa</a
+        >
+        <a
+          href="https://wa.me/18099574748?text=Hola!%20Vi%20la%20carta%20y%20quiero%20hacer%20un%20pedido"
+          target="_blank"
+          class="cta-btn btn-wa"
+          >💬 Pedir por WhatsApp</a
+        >
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mfooter">
+      <p>
+        <strong>Pizza Gallery</strong> · C/ Sánchez Km. 18½ No. 9, Zona
+        Industrial de Haina
+      </p>
+      <p style="margin-top: 4px">
+        Sucursal: C/ Sánchez Km. 1, Cruce de Haina (Bomba EcoPetróleo) · Tel.
+        <a href="tel:8099574748">809-957-4748</a>
+      </p>
+    </footer>
+  </body>
+</html>

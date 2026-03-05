@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pizza Gallery - Carta completa. Pizzas artesanales, focaccias, bebidas y combos en Bajos de Haina, República Dominicana." />
+  <title>Carta | Pizza Gallery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C0392B;
+      --red-dark: #922B21;
+      --cream: #FDF6EC;
+      --black: #1A1A1A;
+      --gold: #D4AF37;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .menu-header {
+      background: var(--black);
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    }
+
+    .menu-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .header-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--red);
+    }
+
+    .header-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .header-logo span em {
+      color: #FF6B3D;
+      font-style: normal;
+    }
+
+    .header-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .header-back:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    /* ── HERO STRIP ── */
+    .menu-hero {
+      background: linear-gradient(135deg, var(--red) 0%, #7B1A10 100%);
+      padding: 36px 16px;
+      text-align: center;
+    }
+
+    .menu-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .menu-hero p {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.95rem;
+    }
+
+    .menu-hero .hero-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-badge {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .menu-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 16px 60px;
+    }
+
+    .menu-pages-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    /* ── MENU IMAGE CARDS ── */
+    .menu-pages {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .menu-page-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-page-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    }
+
+    .menu-page-label {
+      background: var(--red);
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-page-label i {
+      font-size: 0.9rem;
+    }
+
+    .menu-page-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.96);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 10px;
+      touch-action: pinch-zoom;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover { background: var(--red); }
+
+    .lightbox-hint {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    /* ── ORDER STRIP ── */
+    .order-strip {
+      background: var(--black);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .order-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .order-strip p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+
+    .order-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+    }
+    .btn-red:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(192,57,43,0.45);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: #1EB855;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    }
+
+    /* ── FOOTER ── */
+    .menu-footer {
+      text-align: center;
+      padding: 24px 16px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      color: #999;
+      font-size: 0.78rem;
+    }
+
+    /* ── MOBILE TWEAKS ── */
+    @media (min-width: 640px) {
+      .menu-pages {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="menu-header">
+    <div class="menu-header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="logo.jpg" alt="Logo Pizza Gallery" />
+        <span>Pizza <em>Gallery</em></span>
+      </a>
+      <a href="index.html" class="header-back">
+        <i class="fas fa-arrow-left"></i> Volver al sitio
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="menu-hero">
+    <h1>Nuestra Carta</h1>
+    <p>Bajos de Haina, República Dominicana · (809) 957-4748</p>
+    <div class="hero-badges">
+      <span class="hero-badge"><i class="fas fa-clock"></i> 9am – 10pm todos los días</span>
+      <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> Carr. Sánchez Vieja, Haina</span>
+      <span class="hero-badge"><i class="fas fa-star"></i> 4.1 / 5 · 329 reseñas</span>
+    </div>
+  </div>
+
+  <!-- MENU CONTENT -->
+  <main class="menu-content">
+    <p class="menu-pages-label"><i class="fas fa-pizza-slice"></i> &nbsp;Toca la imagen para ampliar</p>
+
+    <div class="menu-pages">
+
+      <!-- Página 1 -->
+      <div class="menu-page-card">
+        <div class="menu-page-label">
+          <i class="fas fa-book-open"></i> Página 1
+        </div>
+        <img
+          src="Menu1.jpg"
+          alt="Carta Pizza Gallery - Página 1"
+          class="menu-page-img"
+          onclick="openLightbox(this.src, this.alt)"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Página 2 -->
+      <div class="menu-page-card">
+        <div class="menu-page-label">
+          <i class="fas fa-book-open"></i> Página 2
+        </div>
+        <img
+          src="menu2.jpg"
+          alt="Carta Pizza Gallery - Página 2"
+          class="menu-page-img"
+          onclick="openLightbox(this.src, this.alt)"
+          loading="eager"
+        />
+      </div>
+
+    </div>
+
+    <!-- ORDER STRIP -->
+    <div class="order-strip">
+      <h3>¿Listo para ordenar?</h3>
+      <p>Pide online o escríbenos directamente por WhatsApp</p>
+      <div class="order-btns">
+        <a href="https://www.pedidosya.com.do" target="_blank" class="btn-order btn-red">
+          <i class="fas fa-pizza-slice"></i> Pedir en PedidosYa
+        </a>
+        <a href="https://wa.me/18099574748?text=Hola!%20Vi%20la%20carta%20y%20quiero%20hacer%20un%20pedido" target="_blank" class="btn-order btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="menu-footer">
+    &copy; 2026 Pizza Gallery · Bajos de Haina, República Dominicana
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <img src="" alt="" id="lightboxImg" />
+    <span class="lightbox-hint"><i class="fas fa-search-plus"></i> Pellizca para hacer zoom · Toca fuera para cerrar</span>
+  </div>
+
+  <script>
+    function openLightbox(src, alt) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxImg').alt = alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target === document.getElementById('lightboxImg')) return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
